@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming UI Portfolio</title>
+    <style>
+        /* 기본 테마 설정: 다크 네이비 & 시안 */
+        :root {
+            --bg-color: #0a0e14;
+            --panel-bg: rgba(16, 23, 33, 0.9);
+            --primary-cyan: #00f2ff;
+            --secondary-blue: #1a3a5a;
+            --text-color: #e0faff;
+            --border-glow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* HUD 패널 스타일 */
+        .container {
+            width: 100%;
+            max-width: 800px;
+            border: 2px solid var(--primary-cyan);
+            background: var(--panel-bg);
+            box-shadow: var(--border-glow);
+            padding: 30px;
+            position: relative;
+            clip-path: polygon(0% 5%, 5% 0%, 95% 0%, 100% 5%, 100% 95%, 95% 100%, 5% 100%, 0% 95%);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-cyan);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            text-shadow: var(--border-glow);
+            border-bottom: 1px solid var(--primary-cyan);
+            padding-bottom: 10px;
+        }
+
+        /* ⚔️ 가격표: 스탯창/스킬트리 스타일 */
+        .price-section {
+            margin-top: 40px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .stat-card {
+            border-left: 4px solid var(--primary-cyan);
+            background: rgba(0, 242, 255, 0.05);
+            padding: 15px;
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            background: rgba(0, 242, 255, 0.15);
+            transform: translateX(10px);
+        }
+
+        .stat-name {
+            font-weight: bold;
+            font-size: 0.9em;
+            color: var(--primary-cyan);
+        }
+
+        .stat-value {
+            font-size: 1.5em;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* 📝 문의양식: 캐릭터 생성 폼 스타일 */
+        .order-section {
+            margin-top: 50px;
+            border-top: 1px double var(--primary-cyan);
+            padding-top: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.8em;
+            text-transform: uppercase;
+            color: var(--primary-cyan);
+        }
+
+        input, textarea, select {
+            width: 100%;
+            background: var(--secondary-blue);
+            border: 1px solid var(--primary-cyan);
+            padding: 12px;
+            color: white;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        input:focus {
+            box-shadow: var(--border-glow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: transparent;
+            border: 2px solid var(--primary-cyan);
+            color: var(--primary-cyan);
+            font-weight: bold;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-cyan);
+            color: var(--bg-color);
+            box-shadow: var(--border-glow);
+        }
+
+        .scanline {
+            width: 100%;
+            height: 2px;
+            background: rgba(0, 242, 255, 0.1);
+            position: absolute;
+            top: 0;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { top: 0%; }
+            100% { top: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="scanline"></div>
+    
+    <h1>Mission: Commission</h1>
+
+    <div class="price-section">
+        <h3 style="color: var(--primary-cyan);">[ STATUS & COST ]</h3>
+        <div class="stat-grid">
+            <div class="stat-card">
+                <span class="stat-name">TYPE A. DOODLE</span>
+                <span class="stat-value">15,000 Gold</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-name">TYPE B. ILLUST</span>
+                <span class="stat-value">50,000 Gold</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-name">RE-TOUCHING</span>
+                <span class="stat-value">+ 5,000 Gold</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-name">COMMERCIAL</span>
+                <span class="stat-value">x 3.0 Multiplier</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="order-section">
+        <h3 style="color: var(--primary-cyan);">[ CHARACTER CREATION ]</h3>
+        <form>
+            <div class="form-group">
+                <label>User Name (닉네임)</label>
+                <input type="text" placeholder="입력하세요...">
+            </div>
+            <div class="form-group">
+                <label>Class / Concept (신청 타입 및 컨셉)</label>
+                <select>
+                    <option>Type A (Doodle)</option>
+                    <option>Type B (Illust)</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Equipment / Appearance (외관 묘사)</label>
+                <textarea rows="4" placeholder="캐릭터의 특징을 상세히 적어주세요."></textarea>
+            </div>
+            <button type="button" class="btn-submit">START MISSION (신청하기)</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
